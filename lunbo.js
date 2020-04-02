@@ -54,7 +54,7 @@ var $lunbo=(function(){
             }
         }, 30)
     }
-    function show(container){
+    function show(container,time){
         // 绘制dom
         $(container).html(html);
         // 事件绑定
@@ -67,7 +67,7 @@ var $lunbo=(function(){
         var index = 1;
 		var timer;
         var isMoving = false;
-		timer = setInterval(next, 2000);
+		timer = setInterval(next, time);
         box.onmouseover = function(){
 			animate(left,{opacity:50})
 			animate(right,{opacity:50})
@@ -121,10 +121,10 @@ var $lunbo=(function(){
 			for( var i=0; i<oNavlist.length; i++ ){
 				oNavlist[i].className = "";
 			}
-			if(index >5 ){
+			if(index >oNavlist.length ){
 				oNavlist[0].className = "active";
 			}else if(index<=0){
-				oNavlist[4].className = "active";
+				oNavlist[oNavlist.length-1].className = "active";
 			}else {
 				oNavlist[index-1].className = "active";
 			}
